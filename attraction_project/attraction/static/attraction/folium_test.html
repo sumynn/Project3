@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9c421ac8d95f44ebbed7c99d9671e984 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_9c421ac8d95f44ebbed7c99d9671e984" ></div>
+        
+</body>
+<script>    
+    
+            var map_9c421ac8d95f44ebbed7c99d9671e984 = L.map(
+                "map_9c421ac8d95f44ebbed7c99d9671e984",
+                {
+                    center: [51.165691, 10.451526],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_75c90c1927f448ff811470797fc946aa = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_9c421ac8d95f44ebbed7c99d9671e984);
+        
+    
+            var marker_9a850013e242487d9d45ba6e8ddd1897 = L.marker(
+                [46.227638, 2.213749],
+                {}
+            ).addTo(map_9c421ac8d95f44ebbed7c99d9671e984);
+        
+    
+        var popup_2280c0d5a87e4ce48e68875d83b93510 = L.popup({"maxWidth": 450});
+
+        
+            var html_289800426b6248fdbed9b90a3727f9ae = $(`<div id="html_289800426b6248fdbed9b90a3727f9ae" style="width: 100.0%; height: 100.0%;"><i>1. France Attraction</i><br><i>오르세 박물관 - 95점</i>&nbsp;&nbsp;<a href=#>more</a><br><i>2. Old town - 92점</i>&nbsp;&nbsp;<a href=#>more</a><br><i>3. Basilique Notre Dame de la Garde - 90점</i>&nbsp;&nbsp;<a href=#>more</a><br><i>4. Vieux Lyon - 88점</i>&nbsp;&nbsp;<a href=#>more</a><br><i>5. Place de la Bourse - 85점</i>&nbsp;&nbsp;<a href=#>more</a><br><i>코로나 정보</i></br><i>백신 보급률 88%</i></br><i>2차 접종자만 입국가능</i></br></div>`)[0];
+            popup_2280c0d5a87e4ce48e68875d83b93510.setContent(html_289800426b6248fdbed9b90a3727f9ae);
+        
+
+        marker_9a850013e242487d9d45ba6e8ddd1897.bindPopup(popup_2280c0d5a87e4ce48e68875d83b93510)
+        ;
+
+        
+    
+    
+            marker_9a850013e242487d9d45ba6e8ddd1897.bindTooltip(
+                `<div>
+                     Click Country
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d436d8e57da9468ea159b20bb302284d = L.marker(
+                [55.378051, -3.435973],
+                {}
+            ).addTo(map_9c421ac8d95f44ebbed7c99d9671e984);
+        
+    
+            marker_d436d8e57da9468ea159b20bb302284d.bindTooltip(
+                `<div>
+                     Click Country
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_26421244681c41be8177df4994e689d6 = L.marker(
+                [51.165691, 10.451526],
+                {}
+            ).addTo(map_9c421ac8d95f44ebbed7c99d9671e984);
+        
+    
+            marker_26421244681c41be8177df4994e689d6.bindTooltip(
+                `<div>
+                     Click Country
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
