@@ -15,7 +15,7 @@ countries=['AUT', 'BEL', 'HRV', 'CZE', 'DNK', 'FRA', 'DEU', 'GRC', 'ISL', 'IRL',
 
 def status():
     # api 사용 (https://disease.sh/docs/)
-    url = 'https://disease.sh/v3/covid-19/countries?yesterday=true'
+    url = 'https://disease.sh/v3/covid-19/countries'
     response = requests.get(url)
     data = response.json()
 
@@ -98,4 +98,4 @@ def vaccine():
 if __name__ == "__main__":
     status()
     vaccine()
-    print(datetime.datetime.now())
+    print("Update Covid Info ---", datetime.datetime.now())
