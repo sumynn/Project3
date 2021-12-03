@@ -28,7 +28,7 @@ class ScoreInfo(models.Model):
         db_table = 'score_info'
 
 
-class CovidStatus(models.Model):
+class Status(models.Model):
     country = models.CharField(primary_key=True, max_length=45)
     cases = models.IntegerField(blank=True, null=True)
     # Field name made lowercase. Field renamed to remove unsuitable characters.
@@ -36,18 +36,22 @@ class CovidStatus(models.Model):
         db_column='today_cases', blank=True, null=True)
     cases_per_million = models.IntegerField(blank=True, null=True)
 
+    date = models.DateField(blank=True, null=True)
+
     class Meta:
         managed = False
-        db_table = 'covid_status'
+        db_table = 'status'
 
 
-class CovidVaccine(models.Model):
+class Vaccine(models.Model):
     country = models.CharField(primary_key=True, max_length=32)
     vaccinated = models.IntegerField(blank=True, null=True)
     fully_vaccinated = models.IntegerField(blank=True, null=True)
     vaccination_rate = models.FloatField(blank=True, null=True)
     fully_vaccination_rate = models.FloatField(blank=True, null=True)
 
+    date = models.DateField(blank=True, null=True)
+
     class Meta:
         managed = False
-        db_table = 'covid_vaccine'
+        db_table = 'vaccine'

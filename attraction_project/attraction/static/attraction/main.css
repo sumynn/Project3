@@ -1,0 +1,74 @@
+.slideWrap {
+  max-width: 960px;
+  width: 90%;
+  margin: 2em auto;
+  position: relative;
+}
+.controls .bx-prev,
+.controls .bx-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3em;
+}
+.controls .bx-prev {
+  right: calc(100% + 40px);
+}
+.controls .bx-next {
+  left: calc(100% + 40px);
+}
+
+.img_controls .imgcontrols span a {
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  text-indent: -9999em;
+}
+.img_controls .imgcontrols .prev a {
+  background-image: url(../images/left.png);
+}
+.img_controls .imgcontrols .next a {
+  background-image: url(../images/right.png);
+}
+.multiple_slider li img {
+  width: 100%;
+  height: auto;
+}
+
+.active_slider h5 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #fff;
+  background: #000;
+  color: #fff;
+  padding: 10px 20px;
+  opacity: 0;
+  margin-top: 40px;
+}
+.active_slider li img {
+  width: 100%;
+  height: auto;
+}
+.active_slider li.active h5 {
+  animation: moveUp 0.5s forwards;
+}
+@keyframes moveUp {
+  from {
+    opacity: 0;
+    margin-top: 40px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+.manual_pager span {
+  cursor: pointer;
+}
+.video_slides video {
+  width: 100%;
+}

@@ -47,7 +47,7 @@
         $("#covid_bar").show();
       }else{
        
-        $("covid_bar").hide();
+        $("#covid_bar").hide();
       }
     }
 
@@ -72,6 +72,35 @@
       }
     }
 
+    
+    function cAll(){
+      if($("#checkAll").is(":checked")){
+        $("input[type=checkbox]").prop("checked", true);
+      }
+      else{
+        $("input[type=checkbox]").prop("checked", false);
+      }
+    }
+
+    function select_workclode(){
+      
+      var idx
+      for (idx=1; idx < 20; idx++){
+
+        $("#tr_" + idx).css("display", "none");
+        console.log(idx)
+      }
+
+      $("input[name=wcb_checkbox]:checked").each(function(){ 
+        var country_num = $(this).val();
+
+        $("#tr_"+ country_num).css("display", "");
+        console.log(country_num)
+      
+      });
+
+    }
+
   </script>
 
 
@@ -94,10 +123,11 @@
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav ">
           <li><a href="/" title="">01 : Home</a></li>
-          <li><a href="/attraction1/" title="">02 : Europe Trip Info</a></li>
-          <li><a href="/attraction2/" title="">03 : Sentiment Analysis</a></li>
+          <li><a href="/attraction1/" title="">02 : Analysis Vader</a></li>
+          <li><a href="/attraction2/" title="">03 : Euroup Trip Info</a></li>
+
         </ul> 
-      </div> 
+      </div>  
     </div>
   </nav>
 </header>
@@ -126,12 +156,13 @@
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-11">
-                  코로나 확진 정보<button name="cst" onclick="show_hide_covid_table();">table</button><button name="bar" onclick="show_hide_covid_bar();">bar chart</button><button name="pie">pie chart</button>
+                  코로나 확진 정보<button name="cst" onclick="show_hide_covid_table();">table</button><button name="bar" onclick="show_hide_covid_bar();">bar chart</button>
                   <br>
                   <table border="1" id="covid_table" style="display: none;">
                     <thead>
                       <tr>
                         <td>country</td>
+                        <td>date</td>
                         <td>cases</td>
                         <td>today_cases</td>
                         <td>cases_per_million</td>
@@ -140,12 +171,13 @@
                     </thead>
                     <tbody>
 
-                      {% for covid_status in covid_status_list %}
+                      {% for a,b,c,d,e in covid_status_list %}
                       <tr>
-                        <td>{{ covid_status.country }}</td>
-                        <td>{{ covid_status.cases}}</td>
-                        <td>{{ covid_status.today_cases}}</td>
-                        <td>{{ covid_status.cases_per_million}}</td>
+                        <td>{{ a }}</td>
+                        <td>{{ b | date:"Y-m-d"}}</td>
+                        <td>{{ c}}</td>
+                        <td>{{ d}}</td>
+                        <td>{{ e}}</td>
                       </tr>
                       {% endfor %}
                     </tbody>
@@ -158,12 +190,13 @@
                 <div class="col-sm-1">
                 </div>
                 <div class="col-sm-11">
-                  코로나 백신 정보<button name="cvt" onclick="show_hide_vaccine_table();">table</button><button name="bar" onclick="show_hide_vaccine_bar();">bar chart</button><button name="pie">pie chart</button>
+                  코로나 백신 정보<button name="cvt" onclick="show_hide_vaccine_table();">table</button><button name="bar" onclick="show_hide_vaccine_bar();">bar chart</button>
                   <br>
                   <table border="1" id="vaccine_table" style="display: none;">
                     <thead>
                       <tr>
                         <td>country</td>
+                        <td>date</td>
                         <td>vaccinated</td>
                         <td>fully_vaccinated</td>
                         <td>vaccination_rate</td>
@@ -176,6 +209,7 @@
                       {% for covid_vaccine in covid_vaccine_list %}
                       <tr>
                         <td>{{ covid_vaccine.country }}</td>
+                        <td>{{ covid_vaccine.date | date:"Y-m-d"}}</td>
                         <td>{{ covid_vaccine.vaccinated }}</td>
                         <td>{{ covid_vaccine.fully_vaccinated }}</td>
                         <td>{{ covid_vaccine.vaccination_rate }}%</td>
@@ -189,6 +223,178 @@
                   
                 </div>
               </div>
+              <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-3"> 
+                  <br>
+                  Wordcloud <button name="wcb" onclick="select_workclode();">조회</button>
+                  <table border="1">
+                    <tr>
+                      <td><input type="checkbox" id="checkAll" onclick="cAll();"></td>
+                      <td>All</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="1"></td>
+                      <td>Austria</td>
+                    </tr>
+                    <tr>
+                        <td><input  type="checkbox" name="wcb_checkbox" value="2"></td>
+                        <td>Belgium</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="3"></td>
+                      <td>Czech</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="4"></td>
+                      <td>Denmark</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="5"></td>
+                      <td>France</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="6"></td>
+                      <td>Gemany</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="7"></td>
+                      <td>Ireland</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="8"></td>
+                      <td>Itary</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="9"></td>
+                      <td>Nederland</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="10"></td>
+                      <td>Norway</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="11"></td>
+                      <td>Portugal</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="12"></td>
+                      <td>Spain</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="13"></td>
+                      <td>Sweden</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="14"></td>
+                      <td>UK</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="15"></td>
+                      <td>Croatia</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="16"></td>
+                      <td>Greece</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="17"></td>
+                      <td>Switzerland</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="18"></td>
+                      <td>Iceland</td>
+                    </tr>
+                    <tr>
+                      <td><input  type="checkbox" name="wcb_checkbox" value="19"></td>
+                      <td>Poland</td>
+                    </tr>
+
+                  </table>
+                </div>
+                <div class="col-sm-8">
+                  <table border="1">
+                    <tr id="tr_1" style="display:none;">
+                      <td>Austria</td>
+                      <td><img id="country_1" src="{% static 'attraction/1_Austria.png' %}"></td>
+                    </tr>
+                    <tr id="tr_2" style="display:none;">
+                      <td>Belgium</td>
+                      <td><img id="country_2" src="{% static 'attraction/2_Belgium.png' %}"></td>
+                    </tr>
+                    <tr id="tr_3" style="display:none;">
+                      <td>Czech</td>
+                      <td><img id="country_3" src="{% static 'attraction/3_Czech.png' %}"></td>
+                    </tr>
+                    <tr id="tr_4" style="display:none;">
+                      <td>Denmark</td>
+                      <td><img id="country_4" src="{% static 'attraction/4_Denmark.png' %}"></td>
+                    </tr>
+                    <tr id="tr_5" style="display:none;">
+                      <td>France</td>
+                      <td><img id="country_5" src="{% static 'attraction/5_France.png' %}"></td>
+                    </tr>
+                    <tr id="tr_6" style="display:none;">
+                      <td>Germany</td>
+                      <td><img id="country_6" src="{% static 'attraction/6_Germany.png' %}"></td>
+                    </tr>
+                    <tr id="tr_7" style="display:none;">
+                      <td>Ireland</td>
+                      <td><img id="country_7" src="{% static 'attraction/7_Ireland.png' %}"></td>
+                    </tr>
+                    <tr id="tr_8" style="display:none;">
+                      <td>Italy</td>
+                      <td><img id="country_8" src="{% static 'attraction/8_Italy.png' %}"></td>
+                    </tr>
+                    <tr id="tr_9" style="display:none;">
+                      <td>Nederland</td>
+                      <td><img id="country_9" src="{% static 'attraction/9_Nederland.png' %}"></td>
+                    </tr>
+                    <tr id="tr_10" style="display:none;">
+                      <td>Norway</td>
+                      <td><img id="country_10" src="{% static 'attraction/10_Norway.png' %}"></td>
+                    </tr>
+                    <tr id="tr_11" style="display:none;">
+                      <td>Norway</td>
+                      <td><img id="country_11" src="{% static 'attraction/11_Portugal.png' %}"></td>
+                    </tr>
+                    <tr id="tr_12" style="display:none;">
+                      <td>Spain</td>
+                      <td><img id="country_12" src="{% static 'attraction/12_Spain.png' %}"></td>
+                    </tr>
+                    <tr id="tr_13" style="display:none;">
+                      <td>Sweden</td>
+                      <td><img id="country_13" src="{% static 'attraction/13_Sweden.png' %}"></td>
+                    </tr>
+                    <tr id="tr_14" style="display:none;">
+                      <td>Spain</td>
+                      <td><img id="country_14" src="{% static 'attraction/14_UK.png' %}"></td>
+                    </tr>
+                    <tr id="tr_15" style="display:none;">
+                      <td>Croatia</td>
+                      <td><img id="country_15" src="{% static 'attraction/15_Croatia.png' %}"></td>
+                    </tr>
+                    <tr id="tr_16" style="display:none;">
+                      <td>Greece</td>
+                      <td><img id="country_16" src="{% static 'attraction/16_Greece.png' %}"></td>
+                    </tr>
+                    <tr id="tr_17" style="display:none;">
+                      <td>Greece</td>
+                      <td><img id="country_17" src="{% static 'attraction/17_Switzerland.png' %}"></td>
+                    </tr>
+                    <tr id="tr_18" style="display:none;">
+                      <td>Iceland</td>
+                      <td><img id="country_18" src="{% static 'attraction/18_Iceland.png' %}"></td>
+                    </tr>
+                    <tr id="tr_19" style="display:none;">
+                      <td>Poland</td>
+                      <td><img id="country_19" src="{% static 'attraction/19_Poland.png' %}"></td>
+                    </tr>
+
+                  </table>
+                </div>
+
+
             </div>
             
             <!--/item-->
@@ -237,6 +443,6 @@
   ga('send', 'pageview');
 </script>
 
---> <script type="text/javascript" src="./main.70a66962.js"></script></body>
+--> <script type="text/javascript" src="{% static 'attraction/main.70a66962.js' %}"></script></body>
 
 </html>

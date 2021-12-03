@@ -1,5 +1,4 @@
 {% load static %}
-{% load humanize %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,16 +22,30 @@
   <link href="{% static 'attraction/main.3f6952e4.css' %}" rel="stylesheet">
   <style>th,td {padding:1px; text-align: center;}</style>
 
-  <link rel="stylesheet" type="text/css" href="{% static 'attraction/themes/default/easyui.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'attraction/themes/icon.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-  <script type="text/javascript" src="{% static 'attraction/jquery.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'attraction/jquery.easyui.min.js' %}"></script> 
-  
+  <script src="{% static 'attraction/main.js' %}"></script> 
+  <script src="{% static 'attraction/all.min.js' %}"></script> 
+
+  <link rel="stylesheet" type="text/css" href="{% static 'attraction/main.css' %}">
+
+    
   <script type="text/javascript">
 
-  </script>
+    function show_hide_attraction_pie() {
+      if($("#attraction_pie").css("display") == "none"){
+      
+        $("#attraction_pie").show();
+      }else{
+      
+        $("#attraction_pie").hide();
+      }
+    }
 
+
+  </script>
 
 <body class="">
 <div id="site-border-left"></div>
@@ -47,15 +60,15 @@
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
         </button>
 
       <div class="collapse navbar-collapse" id="navbar-collapse">
         <ul class="nav navbar-nav ">
           <li><a href="/" title="">01 : Home</a></li>
-          <li><a href="/attraction1/" title="">02 : Europe Covid Info</a></li>
-          <li><a href="/attraction2/" title="">03 : Sentiment Analysis</a></li>
-        </ul> 
+          <li><a href="/attraction1/" title="">02 : Analysis Vader</a></li>
+          <li><a href="/attraction2/" title="">03 : Euroup Trip Info</a></li>
+        </ul>
       </div> 
     </div>
   </nav>
@@ -67,7 +80,7 @@
       
       <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
         <div class="text-center">
-          <h1 class="h2">Analysis Vader & VERT</h1>
+          <h1 class="h2">Euroup Trip Info</h1>
         </div>
       </div>
 
@@ -77,13 +90,52 @@
         <!-- Carousel items -->
         <div class="carousel-inner">
             <div class="item active">
+
+              <!--/row-->
               <div class="row">
-                <div class="col-sm-6">
-                  {{map|safe}}                    
+                <div class="slideWrap activeWrap">
+                  <div class="active_slider">
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production95/d1340/5cdeb210-db82-11e8-8252-0242ac110006.jpg" alt=""><h5>런던 트래블 키트에서는 영국에서 가장 인기 있는 여행지의 하나인 런던 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을 하더라도 항상 답이 필요한 질문들이 있어요. 날씨는 어떤가요? 공항에서 호텔까지 어떻게 가나요? 어떤 통화와 콘센트 타입이 필요한가요? 이에 대한 모든...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production157/d902/c6635b80-3999-4245-88e9-c12c5267ed44.jpg" alt=""><h5>스페인의 발레아레스 제도에 처음 방문한다면 어떤 섬이 자신에게 적합한지 궁금할 거예요. 아름다운 해변과 멋진 날씨를 자랑하면서도 자신만의 고유한 매력이 있는...</h5></li>
+
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production114/d1030/7cf8dd60-f585-11e8-b8fa-0242ac11000d.jpg" alt=""><h5>파리의 뮤제 뒤 루브르는 아마도 세계에서 가장 유명한 박물관일 거예요. 결과적으로 관광객들이 가장 많이 찾는 관광명소 중 하나이고 루브르 박물관...</h5></li>
+
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production49/d316/a991257e-d5f6-4ca6-a86f-ee0577b6e951.jpg" alt=""><h5>보르도 트래블 키트에서는 프랑스에서 가장 인기 있는 여행지의 하나인 파리 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production37/d1264/661a44be-7752-4c0e-83f5-4b7f3289bc86.jpg" alt=""><h5>칸 트래블 키트에서는 프랑스에서 가장 인기 있는 여행지의 하나인 칸 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production193/d1110/aca0142b-c427-42e0-9f5e-b84a60b625d6.jpg" alt=""><h5>파리는 유명한 도시이니까 모든 사람이 파리에 관한 모든 것을 알고 있을까요? 글쎄요. 아마 알게 되면 놀라실지 모르지만 파리는 수 세기...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production165/d1740/8cff194e-4824-4625-b2df-fb183fa0477b.jpg" alt=""><h5>마르세유 트래블 키트에서는 프랑스에서 가장 인기 있는 여행지의 하나인 마르세유 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을..</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production106/d635/d6a40e97-3e7d-4036-9d43-ba7b4a8ad64a.jpg" alt=""><h5>런던의 새해 전날을 생각하면 파티, 쿵쿵대는 음악, 불꽃놀이가 떠오르나요? 이런 것들이 앞으로 펼쳐질 12개월의 시작을 축하하는 가장 좋은 방법...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production166/d597/877fce69-f630-44e4-8589-cabb177b07e6.jpg" alt=""><h5>니스 트래블 키트에서는 프랑스에서 가장 인기 있는 여행지의 하나인 니스 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production111/d832/76137343-10ae-4bbd-915a-06160896f9b1.jpg" alt=""><h5>파리의 임산부 여행자들은 도시의 편리한 교통 시스템, 중앙에 위치한 호텔, 아름다운 경치 덕분에 임신 중에도 여전히 즐거운 휴가를 보낼 수...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production195/d540/2f140b4c-51f4-4757-bcbc-28c678edbfdf.jpg" alt=""><h5>로마 트래블 키트에서는 이탈리아에서 가장 인기 있는 여행지의 하나인 로마 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production185/d1887/77085120-b69b-11e8-a095-0242ac11000d.jpg" alt=""><h5>로마에서 흔히 겪을 수 있는 이러한 사기 때문에 소위 '영원의 도시'로 떠난 여행의 기억이 영원히 좋지 않게 남을 수...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production176/d1240/9b66fcd6-5b01-4667-9d72-f843fad638fe.jpg" alt=""><h5>사람들이 로마에 처음 여행할 때 저지르는 실수에는 새로운 여행지에서 겪을 수 있는 일반적인 실수도 물론 포함돼요. 하지만 여기서는 이 유명한...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production128/d1690/73f4be31-786b-4f17-9a9d-5b8dfdce5772.jpg" alt=""><h5>바르셀로나 트래블 키트에서는 스페인에서 가장 인기 있는 여행지의 하나인 바르셀로나 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을...</h5></li>
+
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production142/d122/932185b4-d84c-45dd-beee-f6b86bf27eca.jpg" alt=""><h5>스탠다드한 랜드마크와 박물관을 넘어선 파리를 느껴보고 싶다면 다양하고 멋진 축제와 시장에 가보세요. 이런 이벤트들은 흥미롭고 독창적이며 확연히 파리지앵다운 느낌이에요. 추천하는...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production57/d418/1010f650-f586-11e8-b7e0-0242ac110002.jpg" alt=""><h5>여름에 파리를 방문하면 이 도시에서 자신만의 추억을 한껏 만들 수 있어요. 많은 파리인이 다른 곳으로 휴가를 떠나기 때문에 덜 혼잡하고...</h5></li>
+                    <li><img src="https://a.cdn-hotels.com/gdcs/production122/d1207/c6cf73e0-f585-11e8-b7e0-0242ac110002.jpg" alt=""><h5>리옹 트래블 키트에서는 프랑스에서 가장 인기 있는 여행지의 하나인 리옹 여행을 계획하는 데 필요한 필수 정보를 제공해드릴게요. 아무리 자주 여행을...</h5></li>
+                    <li><img src=https://a.cdn-hotels.com/gdcs/production167/d1002/a08dc880-b69c-11e8-a439-0242ac110006.jpg" alt=""><h5>바르셀로나는 유럽에서 사람들이 가장 많이 방문하는 도시 중 하나이지만 어떤 현지인들은 너무 많은 관광객 때문에 짜증이 나 있어요. 이 팁과...</h5></li>
+                  </div>
                 </div>
-                <div class="col-sm-6">
-                  {{map|safe}}                    
               </div>
+
+              <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-11">
+                  <br>
+                  attraction<button name="atb" onclick="show_hide_attraction_pie();">pie</button>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-11">
+                  <img id="attraction_pie" src="{% static 'attraction/attraction_pie.png' %}" style="display: none;">
+                </div>
+              </div>
+
+           
             </div>
             
             <!--/item-->

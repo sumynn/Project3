@@ -16,7 +16,6 @@ import pymysql
 
 pymysql.install_as_MySQLdb()
 
-"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -27,19 +26,20 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-"""
 
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Covid',
         'USER': 'team4',
         'PASSWORD': 'team4_test',
-        #        'HOST': '52.198.86.88',
-        'HOST': 'localhost',
+                'HOST': '52.198.86.88',
+        # 'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+"""
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
