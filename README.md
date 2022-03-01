@@ -58,7 +58,7 @@
 
   - 리뷰 작성자 id, 개인 평점, 리뷰 제목, 리뷰 내용, 여행 날짜 등 추출
 
-    <img src="https://user-images.githubusercontent.com/87269113/156041623-9383dfc9-f9d1-497a-957f-60586d6e66d2.png" style="zoom:50%;" />
+    <img src="https://user-images.githubusercontent.com/87269113/156041623-9383dfc9-f9d1-497a-957f-60586d6e66d2.png" width="60%">
     
     <br>
 
@@ -72,7 +72,7 @@
 
     - 업데이트 날짜, 누적 확진자, 신규 확진자, 100만명당 확진자 등 추출
 
-      <img src="https://user-images.githubusercontent.com/87269113/156022524-e0eda284-e27a-49a0-8fd0-e00a9031580c.png" style="zoom: 67%;" />
+      <img src="https://user-images.githubusercontent.com/87269113/156022524-e0eda284-e27a-49a0-8fd0-e00a9031580c.png" width="40%">
 
   - 백신 접종 현황
 
@@ -80,13 +80,13 @@
 
     - 업데이트 날짜, 1차 접종자 수, 접종 완료자 수, 1차 접종률, 접종 완료율 등 추출
 
-      <img src="https://user-images.githubusercontent.com/87269113/156022476-55ee4825-0b8e-485a-ad82-725e70a2a071.png" style="zoom:67%;" />
+      <img src="https://user-images.githubusercontent.com/87269113/156022476-55ee4825-0b8e-485a-ad82-725e70a2a071.png" width="40%">
       
       <br>
 
 - `Crontab`을 사용해 코로나 현황 데이터 매일 1회 자동 업데이트, DB 자동 백업
 
-  ```
+  ```sh
   30 09 * * * /usr/bin/python3 /home/lab21/project/covid.py >> /home/lab21/cron.log 2>&1
   30 09 * * * sh /home/lab21/project/db_backup.sh >> /home/lab21/cron.log 2>&1
   ```
