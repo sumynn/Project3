@@ -2,7 +2,7 @@
 
 > 📅 2021.10.21 - 2021.12.03 (6주)
 >
-> 👨‍👦‍👦 3인
+> 👨‍👦‍👦 3인 (데이터 수집 담당)
 
 <br>
 
@@ -26,14 +26,11 @@
 
 - Python3
 - AWS
-- 데이터 수집
-  - Selenium
-  - MongoDB
-- EDA 및 모델링
-  - VADER 감성 분석
-- 웹 페이지 구현
-  - MySQL
-  - Django
+- Selenium
+- VADER
+- MongoDB
+- MySQL
+- Django
 
 <br>
 
@@ -61,16 +58,21 @@
 
   - 리뷰 작성자 id, 개인 평점, 리뷰 제목, 리뷰 내용, 여행 날짜 등 추출
 
+    <img src="https://user-images.githubusercontent.com/87269113/156041623-9383dfc9-f9d1-497a-957f-60586d6e66d2.png" style="zoom:50%;" />
+    
     <br>
 
-- 코로나 현황
+- 코로나 현황 데이터 수집
 
   > [코로나 현황 데이터 수집 코드](covid.py)
 
   - 확진자 현황
 
     - [API](https://github.com/disease-sh/API)를 사용해 [Worldometer](https://www.worldometers.info/coronavirus/)의 데이터 추출 후 **MySQL** 적재
+
     - 업데이트 날짜, 누적 확진자, 신규 확진자, 100만명당 확진자 등 추출
+
+      <img src="https://user-images.githubusercontent.com/87269113/156022524-e0eda284-e27a-49a0-8fd0-e00a9031580c.png" style="zoom: 67%;" />
 
   - 백신 접종 현황
 
@@ -78,8 +80,19 @@
 
     - 업데이트 날짜, 1차 접종자 수, 접종 완료자 수, 1차 접종률, 접종 완료율 등 추출
 
+      <img src="https://user-images.githubusercontent.com/87269113/156022476-55ee4825-0b8e-485a-ad82-725e70a2a071.png" style="zoom:67%;" />
+      
       <br>
 
+- `Crontab`을 사용해 코로나 현황 데이터 매일 1회 자동 업데이트, DB 자동 백업
+
+  ```
+  30 09 * * * /usr/bin/python3 /home/lab21/project/covid.py >> /home/lab21/cron.log 2>&1
+  30 09 * * * sh /home/lab21/project/db_backup.sh >> /home/lab21/cron.log 2>&1
+  ```
+  
+  <br>
+  
 - MySQL DB 백업
 
   [db_backup.sh](db_backup.sh)
@@ -98,18 +111,6 @@
 
   <br>
 
-- `Crontab`을 사용해 코로나 현황 데이터 매일 1회 자동 업데이트, DB 자동 백업
-
-  ```
-  30 09 * * * /usr/bin/python3 /home/lab21/project/covid.py >> /home/lab21/cron.log 2>&1
-  30 09 * * * sh /home/lab21/project/db_backup.sh >> /home/lab21/cron.log 2>&1
-  ```
-
-<br>
-
 ## 👍 배운 점
 
 - 이전과는 달리 크롤링을 하며 발생하는 에러(ex. 리뷰에 여행 날짜가 없으면 에러 발생)들이 많았다. 크롤링을 자동화하기 위해 이를 모두 try/except 문으로 예외 처리해 줬다. 하지만 단순히 에러를 회피하는 방식이었기 때문에 처리할 수 있는 에러들은 그에 맞는 처리 방식을 사용하는 것이 좋을 것 같다.
-
-<br>
-
